@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="theme-color" content="#0b2a20">
+  <title>Register | Online Market Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&amp;family=Schibsted+Grotesk:wght@600;700;800;900&amp;display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/market.css">
+  <script src="js/theme.js"></script>
+  <script src="js/enhance.js" defer></script>
+</head>
+<body>
+  <div class="auth-layout">
+    <section class="auth-art">
+      <div class="auth-showcase"><div class="showcase-col"><div class="showcase-track"><figure class="tile"><img src="assets/products/premium-rice.jpg" alt="Premium Rice Pack" loading="lazy"></figure><figure class="tile"><img src="assets/products/wireless-headphones.jpg" alt="Wireless Headphones" loading="lazy"></figure><figure class="tile"><img src="assets/products/mango-juice.jpg" alt="Tropical Mango Juice" loading="lazy"></figure><figure class="tile"><img src="assets/products/fresh-apple.jpg" alt="Fresh Apple Pack" loading="lazy"></figure><figure class="tile"><img src="assets/products/shampoo.jpg" alt="Herbal Shampoo" loading="lazy"></figure><figure class="tile" aria-hidden="true"><img src="assets/products/premium-rice.jpg" alt="" loading="lazy"></figure><figure class="tile" aria-hidden="true"><img src="assets/products/wireless-headphones.jpg" alt="" loading="lazy"></figure><figure class="tile" aria-hidden="true"><img src="assets/products/mango-juice.jpg" alt="" loading="lazy"></figure><figure class="tile" aria-hidden="true"><img src="assets/products/fresh-apple.jpg" alt="" loading="lazy"></figure><figure class="tile" aria-hidden="true"><img src="assets/products/shampoo.jpg" alt="" loading="lazy"></figure></div></div><div class="showcase-col"><div class="showcase-track"><figure class="tile"><img src="assets/products/ceylon-tea.jpg" alt="Ceylon Tea Premium" loading="lazy"></figure><figure class="tile"><img src="assets/products/bluetooth-speaker.jpg" alt="Portable Bluetooth Speaker" loading="lazy"></figure><figure class="tile"><img src="assets/products/cashew-mix.jpg" alt="Roasted Cashew Mix" loading="lazy"></figure><figure class="tile"><img src="assets/products/laundry-liquid.jpg" alt="Eco Laundry Liquid" loading="lazy"></figure><figure class="tile"><img src="assets/products/notebook-set.jpg" alt="Premium Notebook Set" loading="lazy"></figure><figure class="tile" aria-hidden="true"><img src="assets/products/ceylon-tea.jpg" alt="" loading="lazy"></figure><figure class="tile" aria-hidden="true"><img src="assets/products/bluetooth-speaker.jpg" alt="" loading="lazy"></figure><figure class="tile" aria-hidden="true"><img src="assets/products/cashew-mix.jpg" alt="" loading="lazy"></figure><figure class="tile" aria-hidden="true"><img src="assets/products/laundry-liquid.jpg" alt="" loading="lazy"></figure><figure class="tile" aria-hidden="true"><img src="assets/products/notebook-set.jpg" alt="" loading="lazy"></figure></div></div><div class="showcase-col"><div class="showcase-track"><figure class="tile"><img src="assets/products/arabica-coffee.jpg" alt="Arabica Coffee 250g" loading="lazy"></figure><figure class="tile"><img src="assets/products/banana-bunch.jpg" alt="Banana Bunch" loading="lazy"></figure><figure class="tile"><img src="assets/products/fitness-band.jpg" alt="Smart Fitness Band" loading="lazy"></figure><figure class="tile"><img src="assets/products/coconut-milk.jpg" alt="Coconut Milk Pack" loading="lazy"></figure><figure class="tile"><img src="assets/products/ballpoint-pens.jpg" alt="Ballpoint Pen Set" loading="lazy"></figure><figure class="tile" aria-hidden="true"><img src="assets/products/arabica-coffee.jpg" alt="" loading="lazy"></figure><figure class="tile" aria-hidden="true"><img src="assets/products/banana-bunch.jpg" alt="" loading="lazy"></figure><figure class="tile" aria-hidden="true"><img src="assets/products/fitness-band.jpg" alt="" loading="lazy"></figure><figure class="tile" aria-hidden="true"><img src="assets/products/coconut-milk.jpg" alt="" loading="lazy"></figure><figure class="tile" aria-hidden="true"><img src="assets/products/ballpoint-pens.jpg" alt="" loading="lazy"></figure></div></div></div>
+      <a class="brand" href="index.html"><span class="brand-mark"><i class="fas fa-basket-shopping"></i></span> <span class="brand-name">Online Market Store</span></a>
+      <div>
+        <span class="hero-kicker">Customer account</span>
+        <h1 class="auth-headline">Create your account and shop with confidence.</h1>
+        <p class="auth-lede">Register once to place orders, access promotional pricing and follow delivery progress from your customer dashboard.</p>
+      </div>
+      <small class="auth-foot">SE2030 Customer Registration</small>
+    </section>
+    <section class="auth-form-wrap">
+      <form class="auth-card" id="form">
+        <h1>Create account</h1>
+        <p class="auth-sub">A few details and you're ready to shop.</p>
+        <div id="message"></div>
+        <div class="form-group"><label for="name">Full name</label><input class="input" id="name" placeholder="Your full name" autocomplete="name" required></div>
+        <div class="form-group"><label for="email">Email</label><input class="input" id="email" type="email" placeholder="you@example.com" autocomplete="email" required></div>
+        <div class="form-group"><label for="password">Password</label><input class="input" id="password" type="password" minlength="4" placeholder="Minimum 4 characters" autocomplete="new-password" required></div>
+        <button class="btn btn-primary"><i class="fas fa-user-plus"></i> Create Account</button>
+        <p class="auth-switch">Already registered? <a class="link" href="login.html">Login</a></p>
+      </form>
+    </section>
+  </div>
+
+  <script src="js/api.js"></script><script src="js/store.js"></script><script>document.getElementById('form').onsubmit=async e=>{e.preventDefault();const msg=document.getElementById('message');try{const u=await api.register({name:document.getElementById('name').value.trim(),email:document.getElementById('email').value.trim(),password:document.getElementById('password').value,role:'CUSTOMER'});session.set(u);location.href='user-dashboard.html'}catch(err){msg.innerHTML=`<div class="alert alert-error">${escapeHtml(err.message)}</div>`}};</script></body></html>

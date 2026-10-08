@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="theme-color" content="#0b2a20">
+  <title>Checkout | Online Market Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&amp;family=Schibsted+Grotesk:wght@600;700;800;900&amp;display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/market.css">
+  <script src="js/theme.js"></script>
+  <script src="js/enhance.js" defer></script>
+</head>
+<body>
+  <nav class="navbar">
+    <a class="brand" href="index.html"><span class="brand-mark"><i class="fas fa-basket-shopping"></i></span> <span class="brand-name">Online Market Store</span></a>
+    <ul class="nav-links">
+      <li><a href="shop.html">Continue Shopping</a></li>
+      <li><a href="cart.html">Back to Cart</a></li>
+    </ul>
+    <div class="nav-actions">
+      <div id="authActions"></div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <ol class="stepper" aria-label="Checkout progress"><li class="is-done"><span class="step-num"><i class="fas fa-check"></i></span><span class="step-label">Cart</span></li><li class="is-current" aria-current="step"><span class="step-num">2</span><span class="step-label">Details</span></li><li class=""><span class="step-num">3</span><span class="step-label">Confirmation</span></li></ol>
+    <div class="page-hero">
+      <h1>Place your order</h1>
+      <p>Promotional effective prices are calculated in the backend and become the OrderItem unit prices used by Order Management.</p>
+    </div>
+    <div class="cart-layout">
+      <section class="checkout-panel" aria-labelledby="detailsTitle">
+        <div id="message"></div>
+        <div class="panel-block">
+          <h3 class="panel-title" id="detailsTitle"><i class="fas fa-location-dot"></i> Delivery details</h3>
+          <div class="form-group"><label for="name">Customer name</label><input class="input" id="name" autocomplete="name"></div>
+          <div class="form-group"><label for="address">Delivery address</label><textarea class="input" id="address" rows="4" placeholder="House number, street, city" autocomplete="street-address"></textarea></div>
+        </div>
+        <div class="panel-block">
+          <h3 class="panel-title"><i class="fas fa-credit-card"></i> Payment</h3>
+          <div class="form-group"><label for="payment">Demo payment method</label><select class="select" id="payment"><option>Visa / Mastercard (Sandbox)</option><option>Cash on Delivery (Demo)</option></select></div>
+          <div class="alert alert-success"><i class="fas fa-shield-halved" style="margin-top:.2rem"></i><span><strong>Academic sandbox:</strong> no real card information or real payment is processed.</span></div>
+        </div>
+        <button class="btn btn-primary" id="placeBtn"><i class="fas fa-circle-check"></i> Confirm &amp; Place Order</button>
+      </section>
+      <div class="checkout-aside">
+        <aside class="summary" id="orderSummary"></aside>
+        <ul class="trust-list">
+          <li><i class="fas fa-lock"></i><span><strong>Secure demo checkout.</strong> Nothing is charged.</span></li>
+          <li><i class="fas fa-tags"></i><span><strong>Prices verified by the backend.</strong> Active promotions are applied to each item.</span></li>
+          <li><i class="fas fa-truck-fast"></i><span><strong>Delivery record created automatically</strong> and trackable from My Orders.</span></li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer footer--slim"><div class="container copyright">© 2026 Online Market Store, SE2030 Group Project</div></footer>
+
+  <script src="js/api.js"></script><script src="js/store.js"></script><script>
+const user=session.get();if(!user){localStorage.setItem('after_login','checkout.html');location.href='login.html'}const items=cart.get();if(!items.length)location.href='cart.html';document.getElementById('name').value=user?.name||'';function summary(){let total=0;document.getElementById('orderSummary').innerHTML='<h3>Order summary</h3>'+items.map(x=>{const s=Number(x.price)*x.qty;total+=s;return `<div class="summary-row"><span>${escapeHtml(x.name)} × ${x.qty}</span><span>${money(s)}</span></div>`}).join('')+`<div class="summary-row"><span>Delivery status</span><span style="color:#86efac">Preparing after checkout</span></div><div class="summary-row summary-total"><span>Total</span><span>${money(total)}</span></div>`}summary();document.getElementById('placeBtn').onclick=async()=>{const name=document.getElementById('name').value.trim(),address=document.getElementById('address').value.trim(),msg=document.getElementById('message');if(!name||!address){msg.innerHTML='<div class="alert alert-error">Name and delivery address are required.</div>';return}const btn=document.getElementById('placeBtn');btn.disabled=true;btn.textContent='Placing order...';try{const result=await api.checkout({customerName:name,deliveryAddress:address,items:items.map(x=>({productId:x.id,quantity:x.qty}))});cart.clear();msg.innerHTML=`<div class="alert alert-success">Order #${result.order.id} placed successfully. A delivery record has been created.</div>`;setTimeout(()=>location.href=`user-dashboard.html?order=${result.order.id}`,900)}catch(e){msg.innerHTML=`<div class="alert alert-error">${escapeHtml(e.message)}</div>`;btn.disabled=false;btn.innerHTML='<i class="fas fa-circle-check"></i> Confirm & Place Order'} };
+</script></body></html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="theme-color" content="#0b2a20">
+  <title>Login | Online Market Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&amp;family=Schibsted+Grotesk:wght@600;700;800;900&amp;display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/market.css">
+  <script src="js/theme.js"></script>
+  <script src="js/enhance.js" defer></script>
+</head>
+<body>
+  <div class="auth-layout">
+    <section class="auth-art">
+      <div class="auth-showcase"><div class="showcase-col"><div class="showcase-track"><figure class="tile"><img src="assets/products/premium-rice.jpg" alt="Premium Rice Pack" loading="lazy"></figure><figure class="tile"><img src="assets/products/wireless-headphones.jpg" alt="Wireless Headphones" loading="lazy"></figure><figure class="tile"><img src="assets/products/mango-juice.jpg" alt="Tropical Mango Juice" loading="lazy"></figure><figure class="tile"><img src="assets/products/fresh-apple.jpg" alt="Fresh Apple Pack" loading="lazy"></figure><figure class="tile"><img src="assets/products/shampoo.jpg" alt="Herbal Shampoo" loading="lazy"></figure><figure class="tile" aria-hidden="true"><img src="assets/products/premium-rice.jpg" alt="" loading="lazy"></figure><figure class="tile" aria-hidden="true"><img src="assets/products/wireless-headphones.jpg" alt="" loading="lazy"></figure><figure class="tile" aria-hidden="true"><img src="assets/products/mango-juice.jpg" alt="" loading="lazy"></figure><figure class="tile" aria-hidden="true"><img src="assets/products/fresh-apple.jpg" alt="" loading="lazy"></figure><figure class="tile" aria-hidden="true"><img src="assets/products/shampoo.jpg" alt="" loading="lazy"></figure></div></div><div class="showcase-col"><div class="showcase-track"><figure class="tile"><img src="assets/products/ceylon-tea.jpg" alt="Ceylon Tea Premium" loading="lazy"></figure><figure class="tile"><img src="assets/products/bluetooth-speaker.jpg" alt="Portable Bluetooth Speaker" loading="lazy"></figure><figure class="tile"><img src="assets/products/cashew-mix.jpg" alt="Roasted Cashew Mix" loading="lazy"></figure><figure class="tile"><img src="assets/products/laundry-liquid.jpg" alt="Eco Laundry Liquid" loading="lazy"></figure><figure class="tile"><img src="assets/products/notebook-set.jpg" alt="Premium Notebook Set" loading="lazy"></figure><figure class="tile" aria-hidden="true"><img src="assets/products/ceylon-tea.jpg" alt="" loading="lazy"></figure><figure class="tile" aria-hidden="true"><img src="assets/products/bluetooth-speaker.jpg" alt="" loading="lazy"></figure><figure class="tile" aria-hidden="true"><img src="assets/products/cashew-mix.jpg" alt="" loading="lazy"></figure><figure class="tile" aria-hidden="true"><img src="assets/products/laundry-liquid.jpg" alt="" loading="lazy"></figure><figure class="tile" aria-hidden="true"><img src="assets/products/notebook-set.jpg" alt="" loading="lazy"></figure></div></div><div class="showcase-col"><div class="showcase-track"><figure class="tile"><img src="assets/products/arabica-coffee.jpg" alt="Arabica Coffee 250g" loading="lazy"></figure><figure class="tile"><img src="assets/products/banana-bunch.jpg" alt="Banana Bunch" loading="lazy"></figure><figure class="tile"><img src="assets/products/fitness-band.jpg" alt="Smart Fitness Band" loading="lazy"></figure><figure class="tile"><img src="assets/products/coconut-milk.jpg" alt="Coconut Milk Pack" loading="lazy"></figure><figure class="tile"><img src="assets/products/ballpoint-pens.jpg" alt="Ballpoint Pen Set" loading="lazy"></figure><figure class="tile" aria-hidden="true"><img src="assets/products/arabica-coffee.jpg" alt="" loading="lazy"></figure><figure class="tile" aria-hidden="true"><img src="assets/products/banana-bunch.jpg" alt="" loading="lazy"></figure><figure class="tile" aria-hidden="true"><img src="assets/products/fitness-band.jpg" alt="" loading="lazy"></figure><figure class="tile" aria-hidden="true"><img src="assets/products/coconut-milk.jpg" alt="" loading="lazy"></figure><figure class="tile" aria-hidden="true"><img src="assets/products/ballpoint-pens.jpg" alt="" loading="lazy"></figure></div></div></div>
+      <a class="brand" href="index.html"><span class="brand-mark"><i class="fas fa-basket-shopping"></i></span> <span class="brand-name">Online Market Store</span></a>
+      <div>
+        <span class="hero-kicker">Welcome back</span>
+        <h1 class="auth-headline">Shopping and store management in one connected system.</h1>
+        <p class="auth-lede">Customers can browse and track orders while administrators manage categories, companies, products, stock, promotions, orders, deliveries and users.</p>
+      </div>
+      <small class="auth-foot">SE2030 Web-Based Online Market Store</small>
+    </section>
+    <section class="auth-form-wrap">
+      <form class="auth-card" id="form">
+        <h1>Login</h1>
+        <p class="auth-sub">Enter your registered email and password.</p>
+        <div id="message"></div>
+        <div class="form-group"><label for="email">Email</label><input class="input" id="email" type="email" placeholder="you@example.com" autocomplete="email" required></div>
+        <div class="form-group"><label for="password">Password</label><input class="input" id="password" type="password" placeholder="••••••••" autocomplete="current-password" required></div>
+        <button class="btn btn-primary"><i class="fas fa-right-to-bracket"></i> Login</button>
+        <p class="auth-switch">New customer? <a class="link" href="register.html">Create an account</a></p>
+        <div class="demo-accounts">
+          <strong>Demo accounts</strong>
+          Admin: <code>admin@market.lk</code> / <code>admin123</code><br>
+          Customer: <code>customer@market.lk</code> / <code>user123</code>
+        </div>
+      </form>
+    </section>
+  </div>
+
+  <script src="js/api.js"></script><script src="js/store.js"></script><script>document.getElementById('form').onsubmit=async e=>{e.preventDefault();const msg=document.getElementById('message');try{const u=await api.login(document.getElementById('email').value.trim(),document.getElementById('password').value);session.set(u);const after=localStorage.getItem('after_login');localStorage.removeItem('after_login');location.href=after||(u.role==='ADMIN'?'admin-dashboard.html':'user-dashboard.html')}catch(err){msg.innerHTML=`<div class="alert alert-error">${escapeHtml(err.message)}</div>`}};</script></body></html>

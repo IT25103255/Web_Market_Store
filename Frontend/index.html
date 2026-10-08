@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="theme-color" content="#0b2a20">
+  <title>Online Market Store</title>
+  <meta name="description" content="A polished SE2030 web-based online market store with products, stock, promotions, ordering and delivery tracking.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&amp;family=Schibsted+Grotesk:wght@600;700;800;900&amp;display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/market.css">
+  <link rel="stylesheet" href="css/chatbot.css">
+  <script src="js/theme.js"></script>
+  <script src="js/enhance.js" defer></script>
+  <script src="js/chatbot-config.js" defer></script>
+  <script src="js/chatbot.js" defer></script>
+</head>
+<body>
+  <div class="announce" role="note" aria-label="Store highlights"><div class="announce-track"><span class="announce-item"><i class="fas fa-boxes-stacked"></i> Live stock shown on every product</span><span class="announce-item"><i class="fas fa-tags"></i> Promotions applied automatically at checkout</span><span class="announce-item"><i class="fas fa-truck-fast"></i> Track every delivery from My Orders</span><span class="announce-item"><i class="fas fa-shield-halved"></i> Sandbox checkout, no real payments</span><span class="announce-item"><i class="fas fa-layer-group"></i> 8 departments, 20+ products</span><span class="announce-dup" aria-hidden="true"><span class="announce-item"><i class="fas fa-boxes-stacked"></i> Live stock shown on every product</span><span class="announce-item"><i class="fas fa-tags"></i> Promotions applied automatically at checkout</span><span class="announce-item"><i class="fas fa-truck-fast"></i> Track every delivery from My Orders</span><span class="announce-item"><i class="fas fa-shield-halved"></i> Sandbox checkout, no real payments</span><span class="announce-item"><i class="fas fa-layer-group"></i> 8 departments, 20+ products</span></span></div></div>
+  <nav class="navbar">
+    <a class="brand" href="index.html"><span class="brand-mark"><i class="fas fa-basket-shopping"></i></span> <span class="brand-name">Online Market Store</span></a>
+    <ul class="nav-links">
+      <li><a class="active" aria-current="page" href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="offers.html">Offers</a></li>
+      <li><a href="user-dashboard.html">My Orders</a></li>
+    </ul>
+    <div class="nav-search"><i class="fas fa-search" aria-hidden="true"></i><input id="topSearch" placeholder="Search products..." aria-label="Search products"></div>
+    <div class="nav-actions">
+      <a class="cart-link" href="cart.html" aria-label="Shopping cart"><i class="fas fa-cart-shopping"></i><span id="cartCount" class="cart-count"></span></a>
+      <div id="authActions"></div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <span class="hero-kicker">Fresh deals, smart shopping</span>
+          <h1>Everything you need, one market away.</h1>
+          <p>Discover groceries, electronics, household essentials, beverages and personal care products with live stock, clear promotions and an integrated order-to-delivery experience.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="shop.html"><i class="fas fa-store"></i> Start Shopping</a>
+            <a class="btn btn-outline" href="offers.html"><i class="fas fa-tags"></i> View Offers</a>
+          </div>
+          <div class="hero-metrics">
+            <div class="hero-metric"><strong data-count="20" data-suffix="+">20+</strong><span>Demo products</span></div>
+            <div class="hero-metric"><strong data-count="8">8</strong><span>Store categories</span></div>
+            <div class="hero-metric"><strong data-count="6">6</strong><span>Integrated modules</span></div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-showcase"><div class="showcase-col"><div class="showcase-track"><figure class="tile"><img src="assets/products/premium-rice.jpg" alt="Premium Rice Pack" loading="lazy"><figcaption><strong>Premium Rice Pack</strong><span>Groceries</span></figcaption></figure><figure class="tile"><img src="assets/products/wireless-headphones.jpg" alt="Wireless Headphones" loading="lazy"><figcaption><strong>Wireless Headphones</strong><span>Electronics</span></figcaption></figure><figure class="tile"><img src="assets/products/mango-juice.jpg" alt="Tropical Mango Juice" loading="lazy"><figcaption><strong>Tropical Mango Juice</strong><span>Beverages</span></figcaption></figure><figure class="tile"><img src="assets/products/fresh-apple.jpg" alt="Fresh Apple Pack" loading="lazy"><figcaption><strong>Fresh Apple Pack</strong><span>Fresh Produce</span></figcaption></figure><figure class="tile"><img src="assets/products/shampoo.jpg" alt="Herbal Shampoo" loading="lazy"><figcaption><strong>Herbal Shampoo</strong><span>Personal Care</span></figcaption></figure><figure class="tile" aria-hidden="true"><img src="assets/products/premium-rice.jpg" alt="" loading="lazy"><figcaption><strong>Premium Rice Pack</strong><span>Groceries</span></figcaption></figure><figure class="tile" aria-hidden="true"><img src="assets/products/wireless-headphones.jpg" alt="" loading="lazy"><figcaption><strong>Wireless Headphones</strong><span>Electronics</span></figcaption></figure><figure class="tile" aria-hidden="true"><img src="assets/products/mango-juice.jpg" alt="" loading="lazy"><figcaption><strong>Tropical Mango Juice</strong><span>Beverages</span></figcaption></figure><figure class="tile" aria-hidden="true"><img src="assets/products/fresh-apple.jpg" alt="" loading="lazy"><figcaption><strong>Fresh Apple Pack</strong><span>Fresh Produce</span></figcaption></figure><figure class="tile" aria-hidden="true"><img src="assets/products/shampoo.jpg" alt="" loading="lazy"><figcaption><strong>Herbal Shampoo</strong><span>Personal Care</span></figcaption></figure></div></div><div class="showcase-col"><div class="showcase-track"><figure class="tile"><img src="assets/products/ceylon-tea.jpg" alt="Ceylon Tea Premium" loading="lazy"><figcaption><strong>Ceylon Tea Premium</strong><span>Beverages</span></figcaption></figure><figure class="tile"><img src="assets/products/bluetooth-speaker.jpg" alt="Portable Bluetooth Speaker" loading="lazy"><figcaption><strong>Portable Bluetooth Speaker</strong><span>Electronics</span></figcaption></figure><figure class="tile"><img src="assets/products/cashew-mix.jpg" alt="Roasted Cashew Mix" loading="lazy"><figcaption><strong>Roasted Cashew Mix</strong><span>Snacks</span></figcaption></figure><figure class="tile"><img src="assets/products/laundry-liquid.jpg" alt="Eco Laundry Liquid" loading="lazy"><figcaption><strong>Eco Laundry Liquid</strong><span>Household</span></figcaption></figure><figure class="tile"><img src="assets/products/notebook-set.jpg" alt="Premium Notebook Set" loading="lazy"><figcaption><strong>Premium Notebook Set</strong><span>Stationery</span></figcaption></figure><figure class="tile" aria-hidden="true"><img src="assets/products/ceylon-tea.jpg" alt="" loading="lazy"><figcaption><strong>Ceylon Tea Premium</strong><span>Beverages</span></figcaption></figure><figure class="tile" aria-hidden="true"><img src="assets/products/bluetooth-speaker.jpg" alt="" loading="lazy"><figcaption><strong>Portable Bluetooth Speaker</strong><span>Electronics</span></figcaption></figure><figure class="tile" aria-hidden="true"><img src="assets/products/cashew-mix.jpg" alt="" loading="lazy"><figcaption><strong>Roasted Cashew Mix</strong><span>Snacks</span></figcaption></figure><figure class="tile" aria-hidden="true"><img src="assets/products/laundry-liquid.jpg" alt="" loading="lazy"><figcaption><strong>Eco Laundry Liquid</strong><span>Household</span></figcaption></figure><figure class="tile" aria-hidden="true"><img src="assets/products/notebook-set.jpg" alt="" loading="lazy"><figcaption><strong>Premium Notebook Set</strong><span>Stationery</span></figcaption></figure></div></div><div class="showcase-col"><div class="showcase-track"><figure class="tile"><img src="assets/products/arabica-coffee.jpg" alt="Arabica Coffee 250g" loading="lazy"><figcaption><strong>Arabica Coffee 250g</strong><span>Beverages</span></figcaption></figure><figure class="tile"><img src="assets/products/banana-bunch.jpg" alt="Banana Bunch" loading="lazy"><figcaption><strong>Banana Bunch</strong><span>Fresh Produce</span></figcaption></figure><figure class="tile"><img src="assets/products/fitness-band.jpg" alt="Smart Fitness Band" loading="lazy"><figcaption><strong>Smart Fitness Band</strong><span>Electronics</span></figcaption></figure><figure class="tile"><img src="assets/products/coconut-milk.jpg" alt="Coconut Milk Pack" loading="lazy"><figcaption><strong>Coconut Milk Pack</strong><span>Groceries</span></figcaption></figure><figure class="tile"><img src="assets/products/ballpoint-pens.jpg" alt="Ballpoint Pen Set" loading="lazy"><figcaption><strong>Ballpoint Pen Set</strong><span>Stationery</span></figcaption></figure><figure class="tile" aria-hidden="true"><img src="assets/products/arabica-coffee.jpg" alt="" loading="lazy"><figcaption><strong>Arabica Coffee 250g</strong><span>Beverages</span></figcaption></figure><figure class="tile" aria-hidden="true"><img src="assets/products/banana-bunch.jpg" alt="" loading="lazy"><figcaption><strong>Banana Bunch</strong><span>Fresh Produce</span></figcaption></figure><figure class="tile" aria-hidden="true"><img src="assets/products/fitness-band.jpg" alt="" loading="lazy"><figcaption><strong>Smart Fitness Band</strong><span>Electronics</span></figcaption></figure><figure class="tile" aria-hidden="true"><img src="assets/products/coconut-milk.jpg" alt="" loading="lazy"><figcaption><strong>Coconut Milk Pack</strong><span>Groceries</span></figcaption></figure><figure class="tile" aria-hidden="true"><img src="assets/products/ballpoint-pens.jpg" alt="" loading="lazy"><figcaption><strong>Ballpoint Pen Set</strong><span>Stationery</span></figcaption></figure></div></div></div>
+          <div class="floating-tag tag1">
+            <span class="tag-icon"><i class="fas fa-circle-check"></i></span>
+            <div><strong>Live inventory</strong><small>See availability before checkout</small></div>
+          </div>
+          <div class="floating-tag tag2">
+            <span class="tag-icon"><i class="fas fa-bolt"></i></span>
+            <div><strong>Smart offers</strong><small>Discount strategies applied automatically</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container trust-strip" aria-label="Why shop with us">
+      <div class="trust-item"><span class="trust-icon"><i class="fas fa-boxes-stacked"></i></span><div><strong>Live stock</strong><span>Inventory-aware shopping</span></div></div>
+      <div class="trust-item"><span class="trust-icon"><i class="fas fa-tags"></i></span><div><strong>Real promotions</strong><span>Active-date validation</span></div></div>
+      <div class="trust-item"><span class="trust-icon"><i class="fas fa-receipt"></i></span><div><strong>Order tracking</strong><span>From cart to processing</span></div></div>
+      <div class="trust-item"><span class="trust-icon"><i class="fas fa-truck-fast"></i></span><div><strong>Delivery progress</strong><span>Preparing to delivered</span></div></div>
+    </section>
+
+    <section class="section container">
+      <div class="section-head" data-reveal>
+        <div>
+          <h2>Shop by category</h2>
+          <p>Browse a richer demo catalogue managed through Product &amp; Category Management.</p>
+        </div>
+        <a class="link" href="shop.html">Browse all <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div id="categoryGrid" class="category-grid"><div class="spinner"><i class="fas fa-spinner fa-spin"></i></div></div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <div>
+            <h2>Featured products</h2>
+            <p>Live prices, company details and stock status on every item.</p>
+          </div>
+          <a class="link" href="shop.html">View shop <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div id="productGrid" class="product-grid"><div class="spinner"><i class="fas fa-spinner fa-spin"></i></div></div>
+      </div>
+    </section>
+
+    <section class="section container steps-section">
+      <div class="section-head" data-reveal>
+        <div>
+          <h2>From basket to doorstep</h2>
+          <p>Three steps, each one handled by a different module of the system.</p>
+        </div>
+      </div>
+      <ol class="steps">
+        <li class="step-card"><span class="step-no">1</span><div class="step-icon"><i class="fas fa-basket-shopping"></i></div><h3>Browse &amp; add</h3><p>Search the catalogue, compare live prices and stock, then add items to your cart.</p></li>
+        <li class="step-card"><span class="step-no">2</span><div class="step-icon"><i class="fas fa-receipt"></i></div><h3>Checkout</h3><p>Active promotions are applied by the backend, so the price you saw is the price you pay.</p></li>
+        <li class="step-card"><span class="step-no">3</span><div class="step-icon"><i class="fas fa-truck-fast"></i></div><h3>Track delivery</h3><p>A delivery record is created instantly and moves from Preparing to Shipped to Delivered.</p></li>
+      </ol>
+    </section>
+
+    <section class="section container">
+      <div class="promo-banner" data-reveal>
+        <div>
+          <span class="hero-kicker">Promotion &amp; Discount Management</span>
+          <h2>Offers that flow directly into checkout.</h2>
+          <p>Active promotions are validated by date and status, then the Strategy Pattern calculates the effective price used by the storefront and Order Management.</p>
+          <div class="promo-actions"><a class="btn btn-primary" href="offers.html"><i class="fas fa-tags"></i> Browse Current Offers</a></div>
+        </div>
+        <div class="promo-orbit" aria-hidden="true"><div class="promo-visual"><i class="fas fa-percent"></i></div><img class="orbit-tile o1" src="assets/products/mango-juice.jpg" alt=""><img class="orbit-tile o2" src="assets/products/wireless-headphones.jpg" alt=""><img class="orbit-tile o3" src="assets/products/cashew-mix.jpg" alt=""></div>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <div>
+            <h2>Special offers</h2>
+            <p>Current promotions, pulled directly from the Promotion module.</p>
+          </div>
+          <a class="link" href="offers.html">All offers <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div id="offerGrid" class="product-grid"><div class="spinner"><i class="fas fa-spinner fa-spin"></i></div></div>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="section-head" data-reveal>
+        <div>
+          <h2>Why this demo feels complete</h2>
+          <p>Each group member's major function connects into the same end-to-end shopping flow.</p>
+        </div>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card"><div class="feature-icon"><i class="fas fa-box-open"></i></div><h3>Catalogue + inventory</h3><p>Products are grouped into categories, linked to companies and backed by live inventory quantities.</p></article>
+        <article class="feature-card"><div class="feature-icon"><i class="fas fa-cart-shopping"></i></div><h3>Checkout + promotions</h3><p>Promotional effective prices are used when order items are created, keeping checkout consistent with the storefront.</p></article>
+        <article class="feature-card"><div class="feature-icon"><i class="fas fa-truck"></i></div><h3>Orders + delivery</h3><p>Orders move through processing while delivery records progress from Preparing to Shipped and Delivered.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="brand" href="index.html"><span class="brand-mark"><i class="fas fa-basket-shopping"></i></span> Online Market Store</a>
+        <p class="footer-about">A polished, integrated Web-Based Market Store built for the SE2030 Software Engineering group project.</p>
+      </div>
+      <div>
+        <h4>Store</h4>
+        <a href="shop.html">Products</a>
+        <a href="offers.html">Promotions</a>
+        <a href="cart.html">Cart</a>
+      </div>
+      <div>
+        <h4>Account</h4>
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+        <a href="user-dashboard.html">My Orders</a>
+      </div>
+    </div>
+    <div class="container copyright">© 2026 Online Market Store, SE2030 Group Project</div>
+  </footer>
+
+  <script src="js/api.js"></script><script src="js/store.js"></script><script>
+async function loadHome(){try{const [cats,products,offers]=await Promise.all([api.storeCategories(),api.storeProducts(),api.offers()]);document.getElementById('categoryGrid').innerHTML=cats.length?cats.slice(0,8).map(c=>`<a class="category-card" href="shop.html?categoryId=${c.id}"><img class="category-thumb" src="${categoryImage(c.name)}" alt="${escapeHtml(c.name)}"><div><strong>${escapeHtml(c.name)}</strong><div class="sub">Explore products</div></div></a>`).join(''):'<div class="empty">No categories yet.</div>';document.getElementById('productGrid').innerHTML=products.length?products.slice(0,8).map(productCard).join(''):'<div class="empty">No products yet.</div>';document.getElementById('offerGrid').innerHTML=offers.length?offers.slice(0,4).map(productCard).join(''):'<div class="empty">No active promotions today.</div>';}catch(e){['categoryGrid','productGrid','offerGrid'].forEach(id=>document.getElementById(id).innerHTML=`<div class="empty">${escapeHtml(e.message)}</div>`);}}
+document.getElementById('topSearch').addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.value.trim())location.href=`shop.html?q=${encodeURIComponent(e.target.value.trim())}`});loadHome();
+</script></body></html>

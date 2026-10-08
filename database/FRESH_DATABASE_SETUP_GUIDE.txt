@@ -1,0 +1,31 @@
+ONLINE MARKET STORE - CLEAN DATABASE SETUP (WINDOWS / SSMS)
+============================================================
+
+This final project uses a NEW database named: Online_market_system
+Application login: market_user
+Application password: 1234
+
+RECOMMENDED ONE-SCRIPT SETUP
+----------------------------
+1. Close the running backend.
+2. Open SQL Server Management Studio (SSMS).
+3. Connect with Windows Authentication or a SQL Server administrator account.
+4. Open: database\00_RESET_AND_CREATE_ONLINE_MARKET_SYSTEM.sql
+5. Click Execute and wait for the final verification result set.
+   The script creates the database, tables, demo data, and market_user mapping.
+6. Refresh Databases in Object Explorer. You should see: Online_market_system
+7. Optional: open database\VERIFY_DATABASE.sql and Execute.
+8. Double-click CHECK_SETUP.bat.
+9. Double-click RUN_STORE.bat.
+10. Open: http://localhost:8080/index.html
+
+IMPORTANT
+---------
+- RUN_STORE.bat explicitly points the backend to Online_market_system, so old DB_URL environment variables cannot redirect the demo.
+- Do NOT manually add StartDate/start_date or other duplicate columns. The supplied schema exactly matches the Java entity mappings.
+- The Spring Boot DataLoader creates login accounts on first successful startup.
+
+DEMO ACCOUNTS
+-------------
+Admin:    admin@market.lk / admin123
+Customer: customer@market.lk / user123

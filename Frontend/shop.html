@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="theme-color" content="#0b2a20">
+  <title>Shop | Online Market Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&amp;family=Schibsted+Grotesk:wght@600;700;800;900&amp;display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/market.css">
+  <link rel="stylesheet" href="css/chatbot.css">
+  <script src="js/theme.js"></script>
+  <script src="js/enhance.js" defer></script>
+  <script src="js/chatbot-config.js" defer></script>
+  <script src="js/chatbot.js" defer></script>
+</head>
+<body>
+  <div class="announce" role="note" aria-label="Store highlights"><div class="announce-track"><span class="announce-item"><i class="fas fa-boxes-stacked"></i> Live stock shown on every product</span><span class="announce-item"><i class="fas fa-tags"></i> Promotions applied automatically at checkout</span><span class="announce-item"><i class="fas fa-truck-fast"></i> Track every delivery from My Orders</span><span class="announce-item"><i class="fas fa-shield-halved"></i> Sandbox checkout, no real payments</span><span class="announce-item"><i class="fas fa-layer-group"></i> 8 departments, 20+ products</span><span class="announce-dup" aria-hidden="true"><span class="announce-item"><i class="fas fa-boxes-stacked"></i> Live stock shown on every product</span><span class="announce-item"><i class="fas fa-tags"></i> Promotions applied automatically at checkout</span><span class="announce-item"><i class="fas fa-truck-fast"></i> Track every delivery from My Orders</span><span class="announce-item"><i class="fas fa-shield-halved"></i> Sandbox checkout, no real payments</span><span class="announce-item"><i class="fas fa-layer-group"></i> 8 departments, 20+ products</span></span></div></div>
+  <nav class="navbar">
+    <a class="brand" href="index.html"><span class="brand-mark"><i class="fas fa-basket-shopping"></i></span> <span class="brand-name">Online Market Store</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a class="active" aria-current="page" href="shop.html">Shop</a></li>
+      <li><a href="offers.html">Offers</a></li>
+      <li><a href="user-dashboard.html">My Orders</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a class="cart-link" href="cart.html" aria-label="Shopping cart"><i class="fas fa-cart-shopping"></i><span id="cartCount" class="cart-count"></span></a>
+      <div id="authActions"></div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <ol class="breadcrumb" aria-label="Breadcrumb"><li><a href="index.html">Home</a></li><li aria-current="page">Shop</li></ol>
+    <div class="page-hero">
+      <h1>Shop all products</h1>
+      <p>Search the catalogue, filter by category, compare live promotional prices and check inventory before adding an item to your cart.</p>
+    </div>
+    <div class="toolbar" role="search">
+      <div class="input-wrap"><i class="fas fa-search" aria-hidden="true"></i><input class="input" id="search" placeholder="Search by product name..." aria-label="Search by product name"></div>
+      <select class="select" id="category" aria-label="Filter by category"><option value="">All categories</option></select>
+      <button class="btn btn-primary" id="searchBtn"><i class="fas fa-search"></i> Search</button>
+    </div>
+    <div class="shop-meta"><div class="chip-rail" id="categoryChips" aria-label="Filter by category"></div><span class="result-count" id="resultCount" aria-live="polite"></span></div>
+    <div id="grid" class="product-grid"><div class="spinner"><i class="fas fa-spinner fa-spin"></i></div></div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="brand" href="index.html"><span class="brand-mark"><i class="fas fa-basket-shopping"></i></span> Online Market Store</a>
+        <p class="footer-about">A polished, integrated Web-Based Market Store built for the SE2030 Software Engineering group project.</p>
+      </div>
+      <div>
+        <h4>Store</h4>
+        <a href="shop.html">Products</a>
+        <a href="offers.html">Promotions</a>
+        <a href="cart.html">Cart</a>
+      </div>
+      <div>
+        <h4>Account</h4>
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+        <a href="user-dashboard.html">My Orders</a>
+      </div>
+    </div>
+    <div class="container copyright">© 2026 Online Market Store, SE2030 Group Project</div>
+  </footer>
+
+  <script src="js/api.js"></script><script src="js/store.js"></script><script>
+const params=new URLSearchParams(location.search);document.getElementById('search').value=params.get('q')||'';async function init(){try{const cats=await api.storeCategories();document.getElementById('category').innerHTML='<option value="">All categories</option>'+cats.map(c=>`<option value="${c.id}">${escapeHtml(c.name)}</option>`).join('');if(params.get('categoryId'))document.getElementById('category').value=params.get('categoryId');await load();}catch(e){document.getElementById('grid').innerHTML=`<div class="empty">${escapeHtml(e.message)}</div>`}}async function load(){const q=document.getElementById('search').value.trim(),cat=document.getElementById('category').value;document.getElementById('grid').innerHTML='<div class="spinner"><i class="fas fa-spinner fa-spin"></i></div>';try{const products=await api.storeProducts(q,cat);document.getElementById('grid').innerHTML=products.length?products.map(productCard).join(''):'<div class="empty"><i class="fas fa-box-open"></i><h3>No products found</h3><p style="margin-top:.5rem">Try another search or category.</p></div>';}catch(e){document.getElementById('grid').innerHTML=`<div class="empty">${escapeHtml(e.message)}</div>`}}document.getElementById('searchBtn').onclick=load;document.getElementById('search').addEventListener('keydown',e=>{if(e.key==='Enter')load()});document.getElementById('category').onchange=load;init();
+</script></body></html>
